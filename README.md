@@ -4,6 +4,7 @@ Faça suas consultas individuais de CEP, obtendo o retorno do endereço completo
 # Link do APP na Google Play
 https://play.google.com/store/apps/details?id=br.com.andersonmatte.buscacep
 
-# https://viacep.com.br/
+# Link da API ViaCep
+https://viacep.com.br/
 
 # Android, Java, Retrofit, Material Design.
