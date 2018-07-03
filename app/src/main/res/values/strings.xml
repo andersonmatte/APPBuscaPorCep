@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Busca endereço por CEP</string>
+    <string name="app_loading">Carregando...</string>
+    <string name="btn_buscar_endereco">Buscar Endereço</string>
+    <string name="btn_buscar_novo_endereco">Nova Busca</string>
+    <string name="erro_buscaServico">Erro ao buscar o serviço de CEP!</string>
+    <string name="erro_validaForm">Preencha o CEP, para fazer a busca do endereço!</string>
+
+    <string name="seu_endereco">O seu endereço é:</string>
+
+    <string name="cep">Cep:</string>
+    <string name="logradouro">Logradouro:</string>
+    <string name="complemento">Complemento:</string>
+    <string name="bairro">Bairro:</string>
+    <string name="cidade">Cidade:</string>
+    <string name="uf">UF:</string>
+
+    <string name="cep_naoEncontrado">O cep informado não retornou nenhum endereço, tente de novo!</string>
+
+</resources>
