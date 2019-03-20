@@ -1,4 +1,7 @@
-# Busca endereço por CEP
+# Busca Endereço e CEP
+
+# Link Google Play
+https://play.google.com/store/apps/details?id=br.com.andersonmatte.buscacep
 
 ![alt text](/Imagens/Capa.png)
 
