@@ -1,84 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_vertical"
-    tools:context=".activity.activity.EnderecoActivity">
+    tools:context=".projeto.activity.EnderecoActivity">
 
-    <android.support.v7.widget.AppCompatTextView
+    <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_height="489dp"
         android:layout_marginTop="8dp"
-        android:text="@string/seu_endereco"
-        android:textSize="22dp"
-        android:textColor="@color/colorAccent"/>
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/logradouro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:textSize="18dp"
-        android:textColor="@color/colorAccent"/>
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/complemento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="4dp"
-        android:textSize="18dp"
-        android:textColor="@color/colorAccent"/>
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/bairro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="4dp"
-        android:textSize="18dp"
-        android:textColor="@color/colorAccent"/>
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/cep"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="4dp"
-        android:textSize="18dp"
-        android:textColor="@color/colorAccent"/>
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/cidade"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="4dp"
-        android:textSize="18dp"
-        android:textColor="@color/colorAccent"/>
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/uf"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="4dp"
-        android:textSize="18dp"
-        android:textColor="@color/colorAccent"/>
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_buscarNovoEndereco"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/btn_buscarNovoEndereco"
         style="@style/RaisedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/btn_buscar_novo_endereco" />
+        android:text="@string/btn_buscar_novo_endereco"
+        android:textColor="#FFF"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
 
-</android.support.v7.widget.LinearLayoutCompat>
+    </android.support.constraint.ConstraintLayout>

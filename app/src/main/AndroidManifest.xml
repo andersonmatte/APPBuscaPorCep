@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="br.com.andersonmatte.buscacep">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_launcher_web"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_cep2"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
         <activity
-            android:name=".activity.activity.SplashScreenActivity"
+            android:name=".projeto.activity.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.activity.BuscaCepActivity"
+            android:name=".projeto.activity.BuscaPorCepActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.activity.EnderecoActivity"
-            android:parentActivityName=".activity.activity.BuscaCepActivity"
+            android:name=".projeto.activity.EnderecoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".projeto.activity.TipoBuscaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".projeto.activity.BuscaPorEnderecoActivity"
             android:screenOrientation="portrait" />
     </application>
 

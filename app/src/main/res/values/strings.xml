@@ -1,13 +1,24 @@
 <resources>
-    <string name="app_name">Busca endereço por CEP</string>
+    <string name="app_name">Busca Endereço e CEP</string>
     <string name="app_loading">Carregando...</string>
     <string name="btn_buscar_endereco">Buscar Endereço</string>
     <string name="btn_buscar_novo_endereco">Nova Busca</string>
     <string name="erro_buscaServico">Erro ao buscar o serviço de CEP!</string>
     <string name="erro_validaForm">Preencha o CEP, para fazer a busca do endereço!</string>
 
-    <string name="seu_endereco">O seu endereço é:</string>
+    <!-- Tela RadioButton-->
+    <string name="descricaoRB">Selecione o tipo de busca que você deseja para encontrar o seu endereço, você pode buscar por CEP ou por endereço.</string>
+    <string name="cepRB">Buscar por CEP</string>
+    <string name="enderecoRB">Buscar por Endereço</string>
 
+    <!-- Tela por estado endereço-->
+    <string name="estado">Selecione um Estado</string>
+    <string name="cidade1">Selecione uma Cidade</string>
+    <string name="logradouro_1">Informe o Logradouro</string>
+    <string name="logradouro_2">Informe o nome da Rua, AV, Travessa etc.</string>
+
+    <!-- Tela Resultado-->
+    <string name="seu_endereco">O seu endereço é:</string>
     <string name="cep">Cep:</string>
     <string name="logradouro">Logradouro:</string>
     <string name="complemento">Complemento:</string>
