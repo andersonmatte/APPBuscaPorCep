@@ -14,7 +14,4 @@ https://play.google.com/store/apps/details?id=br.com.andersonmatte.buscacep
 ## Link da API ViaCep
 https://viacep.com.br/
 
-## Link da API IBGE
-http://servicodados.ibge.gov.br
-
 ## Android, Java, Retrofit, Material Design.
