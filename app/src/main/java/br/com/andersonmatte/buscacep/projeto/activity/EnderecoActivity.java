@@ -3,15 +3,15 @@ package br.com.andersonmatte.buscacep.projeto.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.List;
 
 import br.com.andersonmatte.buscacep.R;
 import br.com.andersonmatte.buscacep.projeto.adapter.EnderecoAdapter;
-import br.com.andersonmatte.buscacep.projeto.entidade.Endereco;
+import br.com.andersonmatte.buscacep.projeto.entity.Endereco;
 
 public class EnderecoActivity extends AppCompatActivity {
 
@@ -27,14 +27,6 @@ public class EnderecoActivity extends AppCompatActivity {
             this.listaEnderecoRecebido = (List<Endereco>) bundle.getSerializable("resultado");
             this.populaListViewEnderecos(this.listaEnderecoRecebido);
         }
-        //Clique do botão para fazer uma nova busca de endereço por CEP.
-        Button buttonBuscarUsuario = (Button) findViewById(R.id.btn_buscarNovoEndereco);
-        buttonBuscarUsuario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
     }
 
     public void populaListViewEnderecos(List<Endereco> listaEnderecoRecebido) {

@@ -2,7 +2,7 @@ package br.com.andersonmatte.buscacep.projeto.api;
 
 import java.util.List;
 
-import br.com.andersonmatte.buscacep.projeto.entidade.Endereco;
+import br.com.andersonmatte.buscacep.projeto.entity.Endereco;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

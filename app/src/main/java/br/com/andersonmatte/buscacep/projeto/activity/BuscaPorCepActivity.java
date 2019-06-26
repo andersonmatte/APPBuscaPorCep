@@ -16,7 +16,7 @@ import java.util.List;
 import br.com.andersonmatte.buscacep.R;
 import br.com.andersonmatte.buscacep.projeto.api.ViaCepAPI;
 import br.com.andersonmatte.buscacep.projeto.base.AppCompatActivityBase;
-import br.com.andersonmatte.buscacep.projeto.entidade.Endereco;
+import br.com.andersonmatte.buscacep.projeto.entity.Endereco;
 import br.com.jansenfelipe.androidmask.MaskEditTextChangedListener;
 import retrofit2.Call;
 import retrofit2.Callback;

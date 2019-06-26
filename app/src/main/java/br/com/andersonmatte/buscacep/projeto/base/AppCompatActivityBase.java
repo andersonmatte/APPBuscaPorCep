@@ -1,25 +1,32 @@
 package br.com.andersonmatte.buscacep.projeto.base;
 
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
-import java.util.LinkedList;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.andersonmatte.buscacep.R;
-import br.com.andersonmatte.buscacep.projeto.api.IbgeAPI;
-import br.com.andersonmatte.buscacep.projeto.entidade.Estado;
+import br.com.andersonmatte.buscacep.projeto.entity.Estado;
 import io.realm.Realm;
 import io.realm.RealmResults;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class AppCompatActivityBase extends AppCompatActivity {
 
     protected Realm realm;
     protected RealmResults<Estado> estadoRealmResults;
-    protected List<Estado> listaEstado = new LinkedList<>();
+    protected List<Estado> listaEstado = new ArrayList<Estado>();
 
     @Override
     public void setContentView(int layoutResID) {
@@ -43,20 +50,39 @@ public class AppCompatActivityBase extends AppCompatActivity {
     }
 
     protected void buscaEstados() {
-        IbgeAPI ibgeAPI = IbgeAPI.retrofit.create(IbgeAPI.class);
-        final Call<List<Estado>> callEstados = ibgeAPI.getEstados();
-        callEstados.enqueue(new Callback<List<Estado>>() {
-            @Override
-            public void onResponse(Call<List<Estado>> call, Response<List<Estado>> response) {
-                listaEstado = response.body();
-                salvaEstados();
-            }
+        String jsonString = null;
+        Gson gson = new Gson();
+        try {
+            jsonString = buscaEstadosJson();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (jsonString != null) {
+            Type collectionType = new TypeToken<List<Estado>>() {
+            }.getType();
+            this.listaEstado = gson.fromJson(jsonString, collectionType);
+            salvaEstados();
+        }
+    }
 
-            @Override
-            public void onFailure(Call<List<Estado>> call, Throwable t) {
-                Log.i("ERRO", getResources().getString(R.string.erro_buscaServico) + t.getMessage());
+    private String buscaEstadosJson() throws IOException {
+        InputStream is = getResources().openRawResource(R.raw.estadoscidades);
+        Writer writer = new StringWriter();
+        char[] buffer = new char[1024];
+        try {
+            Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            int n;
+            while ((n = reader.read(buffer)) != -1) {
+                writer.write(buffer, 0, n);
             }
-        });
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            is.close();
+        }
+        return writer.toString();
     }
 
     protected void salvaEstados() {
@@ -68,18 +94,18 @@ public class AppCompatActivityBase extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        realm.close();
-    }
-
     public List<Estado> getListaEstado() {
         return listaEstado;
     }
 
     public void setListaEstado(List<Estado> listaEstado) {
         this.listaEstado = listaEstado;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        realm.close();
     }
 
 }

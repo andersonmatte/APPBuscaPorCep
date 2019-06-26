@@ -1,7 +1,8 @@
-package br.com.andersonmatte.buscacep.projeto.entidade;
+package br.com.andersonmatte.buscacep.projeto.entity;
 
 import java.io.Serializable;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 
 public class Estado extends RealmObject implements Serializable {
@@ -11,6 +12,8 @@ public class Estado extends RealmObject implements Serializable {
     private String sigla;
 
     private String nome;
+
+    private RealmList<String> municipios;
 
     public Long getId() {
         return id;
@@ -34,6 +37,14 @@ public class Estado extends RealmObject implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public RealmList<String> getMunicipios() {
+        return municipios;
+    }
+
+    public void setMunicipios(RealmList<String> municipios) {
+        this.municipios = municipios;
     }
 
 }

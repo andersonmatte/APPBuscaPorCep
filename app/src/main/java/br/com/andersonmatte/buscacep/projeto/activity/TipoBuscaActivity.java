@@ -42,4 +42,13 @@ public class TipoBuscaActivity extends AppCompatActivity {
         }
     }
 
+    //Botao voltar para activity com suporte bread crumb.
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, TipoBuscaActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }

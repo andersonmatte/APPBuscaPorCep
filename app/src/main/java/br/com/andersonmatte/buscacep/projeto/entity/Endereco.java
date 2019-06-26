@@ -1,4 +1,4 @@
-package br.com.andersonmatte.buscacep.projeto.entidade;
+package br.com.andersonmatte.buscacep.projeto.entity;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -76,6 +76,11 @@ public class Endereco implements Serializable {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    @Override
+    public String toString() {
+        return "Logradouro: " + logradouro + "\n" + "Complemento: " + complemento + "\n" + "Bairro: " + bairro + "\n" + "Cep: " + cep + "\n" + "Cidade: " + cidade + "\n" + "UF: " + uf;
     }
 
 }

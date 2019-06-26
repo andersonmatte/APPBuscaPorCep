@@ -8,10 +8,10 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
+        android:layout_width="fill_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="75dp"
         android:text="@string/estado"
         android:textColor="#000000"
@@ -21,10 +21,10 @@
 
     <Spinner
         android:id="@+id/spinnerUF"
-        android:layout_width="210dp"
+        android:layout_width="fill_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,10 +32,10 @@
 
     <TextView
         android:id="@+id/textViewMunicipios"
-        android:layout_width="0dp"
+        android:layout_width="fill_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/cidade1"
         android:textColor="#000000"
@@ -44,10 +44,10 @@
 
     <Spinner
         android:id="@+id/spinnerMunicipios"
-        android:layout_width="213dp"
+        android:layout_width="fill_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,11 +55,11 @@
 
     <EditText
         android:id="@+id/nomeRua"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
         android:hint="@string/logradouro_2"
         android:inputType="textPersonName"
         android:textColor="#000000"
@@ -73,11 +73,11 @@
     <Button
         android:id="@+id/btn_buscarEnderecoEnd"
         style="@style/RaisedButton"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:text="@string/btn_buscar_endereco"
         app:layout_constraintTop_toBottomOf="@+id/nomeRua"
         tools:layout_editor_absoluteX="6dp"

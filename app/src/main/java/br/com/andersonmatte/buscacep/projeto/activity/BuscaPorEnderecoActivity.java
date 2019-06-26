@@ -18,12 +18,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 import br.com.andersonmatte.buscacep.R;
-import br.com.andersonmatte.buscacep.projeto.api.IbgeAPI;
 import br.com.andersonmatte.buscacep.projeto.api.ViaCepAPI;
 import br.com.andersonmatte.buscacep.projeto.base.AppCompatActivityBase;
-import br.com.andersonmatte.buscacep.projeto.entidade.Endereco;
-import br.com.andersonmatte.buscacep.projeto.entidade.Estado;
-import br.com.andersonmatte.buscacep.projeto.entidade.Municipio;
+import br.com.andersonmatte.buscacep.projeto.entity.Endereco;
+import br.com.andersonmatte.buscacep.projeto.entity.Estado;
 import io.realm.RealmResults;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,7 +41,6 @@ public class BuscaPorEnderecoActivity extends AppCompatActivityBase {
     private List<String> listaNomeEstado = new LinkedList<>();
     protected RealmResults<Estado> estadoRealmResults;
 
-    private List<Municipio> listaMunicipio = new LinkedList<>();
     private List<String> listaNomeMunicipio = new LinkedList<>();
 
     private ProgressBar mProgressBar;
@@ -83,7 +80,7 @@ public class BuscaPorEnderecoActivity extends AppCompatActivityBase {
                                 intentPerfil.putExtra("endereco", bundle);
                                 startActivity(intentPerfil);
                             } else {
-                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.cep_naoEncontrado), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.logradouro_naoEncontrado), Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -98,9 +95,9 @@ public class BuscaPorEnderecoActivity extends AppCompatActivityBase {
     }
 
     private String buscaSiglaPorListaEstado() {
-        if (this.listaEstado != null && !this.listaEstado.isEmpty()){
+        if (this.listaEstado != null && !this.listaEstado.isEmpty()) {
             for (int i = 0; i < this.listaEstado.size(); i++) {
-                if (this.listaEstado.get(i).getId().equals(idSelecionado)){
+                if (this.listaEstado.get(i).getId().equals(idSelecionado)) {
                     return listaEstado.get(i).getSigla();
                 }
             }
@@ -108,10 +105,10 @@ public class BuscaPorEnderecoActivity extends AppCompatActivityBase {
         return "";
     }
 
-    //Valida se o CEP foi preenchido.
+    //Valida se o logradouro foi preenchido.
     private Boolean validaForm() {
         if (editTextEndereco.getText().toString().isEmpty()) {
-            editTextEndereco.setError(getResources().getString(R.string.erro_validaForm));
+            editTextEndereco.setError(getResources().getString(R.string.erro_validaForm_endereco));
             return false;
         } else {
             return true;
@@ -156,37 +153,17 @@ public class BuscaPorEnderecoActivity extends AppCompatActivityBase {
             for (Estado estado : this.listaEstado) {
                 if (estado != null && estado.getNome() != null && estado.getNome().equals(nomeEstado)) {
                     this.setIdSelecionado(estado.getId());
-                    this.populaMunicipios();
+                    this.listaNomeMunicipio = new LinkedList<>();
+                    this.listaNomeMunicipio = estado.getMunicipios();
+                    populaSpinnerMunicipios();
                 }
             }
         }
     }
 
-    private void populaMunicipios() {
-        IbgeAPI ibgeAPI = IbgeAPI.retrofit.create(IbgeAPI.class);
-        final Call<List<Municipio>> callMunicipios = ibgeAPI.getMunicipios(getIdSelecionado().toString());
-        callMunicipios.enqueue(new Callback<List<Municipio>>() {
-            @Override
-            public void onResponse(Call<List<Municipio>> call, Response<List<Municipio>> response) {
-                listaMunicipio = response.body();
-                populaSpinnerMunicipios();
-            }
-
-            @Override
-            public void onFailure(Call<List<Municipio>> call, Throwable t) {
-                Log.i("ERRO", getResources().getString(R.string.erro_buscaServico) + t.getMessage());
-            }
-        });
-    }
-
     private void populaSpinnerMunicipios() {
-        this.listaNomeMunicipio = new LinkedList<>();
-        for (int i = 0; i < this.listaMunicipio.size(); i++) {
-            this.listaNomeMunicipio.add(this.listaMunicipio.get(i).getNome());
-        }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, this.listaNomeMunicipio);
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerMunicipios.setAdapter(adapter);
         spinnerMunicipios.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -213,15 +190,6 @@ public class BuscaPorEnderecoActivity extends AppCompatActivityBase {
         mProgressBar.setVisibility(exibir ? View.VISIBLE : View.GONE);
     }
 
-    //Botao voltar para activity com suporte bread crumb.
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(this, TipoBuscaActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
     public Long getIdSelecionado() {
         return idSelecionado;
     }
@@ -236,6 +204,16 @@ public class BuscaPorEnderecoActivity extends AppCompatActivityBase {
 
     public void setNomeMunicipioParaValidacoes(String nomeMunicipioParaValidacoes) {
         this.nomeMunicipioParaValidacoes = nomeMunicipioParaValidacoes;
+    }
+
+    //Botao voltar para activity com suporte bread crumb.
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, TipoBuscaActivity.class);
+        startActivity(intent);
+        finish();
+
     }
 
 }
